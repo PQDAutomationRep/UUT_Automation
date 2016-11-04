@@ -69,7 +69,7 @@ public class RelayBoard
 	   * 
 	   * @param zone This is the zone to be activated
 	   * @param state  This is the zone state to be created
-	   * @param debounce This is the programmed debounce time (ms)
+	   * @param debounce This is the programmed debounce time(ms)
 	   * @param offset This is the RelayBoard addr offset (0 or 1)
 	   */
 	
