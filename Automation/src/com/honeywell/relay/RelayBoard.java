@@ -8,7 +8,7 @@ import jssc.*;
 *
 * @author  Tony Crichton
 * @version 1.1.0
-* @since   31-10-2016
+* @since   30-10-2016
 */
 
 public class RelayBoard
