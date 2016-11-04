@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/e278773/workspace/JAR Files/jsch-0.1.54.jar"/>
+	<classpathentry kind="lib" path="C:/Users/e278773/workspace/JAR Files/jssc-2.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/e278773/workspace/JAR Files/test_automation-1.0.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
