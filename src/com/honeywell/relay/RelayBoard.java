@@ -4,7 +4,7 @@ import jssc.*;
 
 /**
 * The RelayBoard application allows control of the KMTronic relay boards for zone/fault 
-* creation on test panels.
+* creation on UUT.
 *
 * @author  Tony Crichton
 * @version 1.2.0
@@ -40,7 +40,7 @@ public class RelayBoard
 	   * @param state  This is the zone state to be created
 	   */
 	
-	public String setFault(String failure, int state) throws SerialPortException, InterruptedException 
+	public String setFault(String failure, int state) throws InterruptedException 
 	{
 		int data[] = {255, ConvertZone(failure, 0), state, 255, (160+rioNo) - Offset, 0};
 		SerialTx(data, 0);		
@@ -54,9 +54,10 @@ public class RelayBoard
 	   * @param failure This is the type of failure to be created
 	   * @param state  This is the zone state to be created
 	   * @param debounce This is the programmed debounce time(ms)
+	 * @throws InterruptedException 
 	   */
 	
-	public String setFault(String failure, int state, int debounce) throws SerialPortException, InterruptedException 
+	public String setFault(String failure, int state, int debounce) throws InterruptedException 
 	{
 		int data[] = {255, ConvertZone(failure, 0), state, 255, (160+rioNo) - Offset, 0};
 		SerialTx(data, debounce);
@@ -72,7 +73,7 @@ public class RelayBoard
 	   * @param offset This is the RelayBoard addr offset (0 or 1)
 	   */
 	
-	public String setZone(String zone, int state, int debounce, int offset) throws SerialPortException, InterruptedException 
+	public String setZone(String zone, int state, int debounce, int offset) throws InterruptedException 
 	{
 		int data[] = {255, ConvertZone(zone, offset), state, 255, (160+rioNo) - Offset, 0};
 		SerialTx(data, debounce);		
@@ -87,7 +88,7 @@ public class RelayBoard
 	   * @param offset This is the RelayBoard addr offset (0 or 1)
 	   */
 
-	public String setZone(String zone, int state, int offset) throws SerialPortException, InterruptedException  
+	public String setZone(String zone, int state, int offset) throws InterruptedException  
 	{
 		int data[] = {255, ConvertZone(zone, offset), state, 255, (160+rioNo) - Offset, 0};
 		SerialTx(data, 0);
@@ -124,10 +125,7 @@ public class RelayBoard
 		    	catch (InterruptedException ex)
 		    	{
 		    		System.out.println("Error:  " + ex);
-		    	}
-		    	
-		    	
-		    	
+		    	}		    	
 		    }
 		    
 		    Thread.sleep(50);
