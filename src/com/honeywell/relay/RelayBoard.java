@@ -7,8 +7,8 @@ import jssc.*;
 * creation on test panels.
 *
 * @author  Tony Crichton
-* @version 1.1.0
-* @since   30-10-2016
+* @version 1.2.0
+* @since   07-11-2016
 */
 
 public class RelayBoard
@@ -27,11 +27,10 @@ public class RelayBoard
 	   * @param comPort This is the serial COM port to connect.
 	   */
 	
-	public RelayBoard(String comPort) throws SerialPortException
+	public RelayBoard(String comPort) throws SerialPortException 
 	{
-		
-			com = comPort;	
-			serialPort = new SerialPort(com);
+		com = comPort;	
+		serialPort = new SerialPort(com);
 	}
 	
 	 /**
@@ -54,7 +53,7 @@ public class RelayBoard
 	   * 
 	   * @param failure This is the type of failure to be created
 	   * @param state  This is the zone state to be created
-	   * @param debounce This is the programmed debounce time (ms)
+	   * @param debounce This is the programmed debounce time(ms)
 	   */
 	
 	public String setFault(String failure, int state, int debounce) throws SerialPortException, InterruptedException 
@@ -97,12 +96,12 @@ public class RelayBoard
 	
 		
 	
-	private void SerialTx(int[] data, int debounce) throws SerialPortException, InterruptedException 
+	private void SerialTx(int[] data, int debounce) throws InterruptedException 
 	{
 		int dataClose[] = {255, data[1], 0};	
 					
-		//serialPort = new SerialPort(com);
-					
+			try
+			{
 				serialPort.openPort();
 								
 				serialPort.setParams(SerialPort.BAUDRATE_9600,
@@ -116,13 +115,29 @@ public class RelayBoard
 		    		    		    
 		    if (debounce > 0)
 		    {
-		    	Thread.sleep(debounce);
-		    	
+		    	try
+		    	{
+		    	Thread.sleep(debounce);		    	
 		    	serialPort.writeIntArray(dataClose);
+		    	}
+		    	
+		    	catch (InterruptedException ex)
+		    	{
+		    		System.out.println("Error:  " + ex);
+		    	}
+		    	
+		    	
+		    	
 		    }
 		    
 		    Thread.sleep(50);
 		    serialPort.closePort();
+			}
+			
+			catch (SerialPortException ex)
+			{
+				System.out.println("Error with port communication:  " + ex);
+			}
 		    		    
 	}
 	
