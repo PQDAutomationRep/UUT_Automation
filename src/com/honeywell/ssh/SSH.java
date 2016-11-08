@@ -13,8 +13,8 @@ import com.jcraft.jsch.Session;
 * Application to run shell commands on SSH enabled panel.
 *
 * @author  Tony Crichton
-* @version 1.0.0
-* @since   31-10-2016
+* @version 1.1.0
+* @since   07-11-2016
 */
 
 public class SSH 
