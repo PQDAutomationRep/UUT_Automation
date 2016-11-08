@@ -7,7 +7,7 @@ import jssc.*;
 * creation on UUT.
 *
 * @author  Tony Crichton
-* @version 1.2.0
+* @version 1.2.1
 * @since   08-11-2016
 */
 
